@@ -33,10 +33,6 @@ router.get('/allBooks', function(req, res) {
 });
 
 router.get('/editBook', function(req, res){
-    //req.logIn({fullName: "Pasha"}, function(err){
-    //	console.log(req.isAuthenticated());
-    //});
-
     if (!req.isAuthenticated()) {
         res.redirect("/register/loginForm");
     }

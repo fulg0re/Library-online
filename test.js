@@ -39,12 +39,13 @@ app.get('/', function(req, res){
 	}
 	else {
 		var coll = myDB.collection("books");
+		console.log("searching for top 3 books...");
 		coll.find({}).sort( {rating : -1} ).limit(3).toArray(function(err, book){
 			if (err || !book) {
 				res.render("index.ejs", {error: err ? err : "no books in Database!!!"});
 			}
 			else {
-				console.log(book);
+				console.log("sending top 3 books...");
 				res.render("index.ejs", {books: book, name: req.user.name});
 			};
 		});

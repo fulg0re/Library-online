@@ -43,7 +43,7 @@ passport.use('local-login', new localStrategy(function (username, password, done
         });
 
 
-        console.log(username + " " + password);
+        //console.log(username + " " + password);
         //done(null, {fullName: "Pasha"});
         //done("wrong username", {fullName: "Pasha"});
         //done(null, {fullName: "Pasha"}, {message: 'Incorrect password.'});
@@ -74,7 +74,7 @@ router.post('/loginForm', function(req, res){
 
 router.post('/registerForm', function(req, res){
     //console.log(req.query);
-    console.log(req.body);
+    //console.log(req.body);
     var userLogin = req.body.inputLogin1;
     var userPassword1 = req.body.inputPassword1;
     var userPassword2 = req.body.inputPassword2;
