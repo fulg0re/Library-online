@@ -46,11 +46,6 @@ app.get('/', function(req, res){
 			else {
 				console.log(book);
 				res.render("index.ejs", {books: book, name: req.user.name});
-				var now = new Date();
-				var newBookId = String(now.getFullYear()) + String(now.getMonth()) + String(now.getDate()) +
-					String(now.getHours()) + String(now.getMinutes()) + String(now.getSeconds()) +
-					String(now.getMilliseconds());
-				console.log(newBookId);
 			};
 		});
 	};

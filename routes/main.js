@@ -5,8 +5,6 @@ var upload = multer({ dest: 'uploads/' });
 
 var router = express.Router();
 
-
-
 // MongoDB vars...
 var MongoClient = require('mongodb').MongoClient;
 var myDB = null;
@@ -245,7 +243,7 @@ router.post('/addNewBook', upload.single('book_cover'), function(req, res) {
     };
 });
 
-router.post('/findBook', function(req, res) {
+router.post('/searchForBook', function(req, res) {
     if (!req.isAuthenticated()) {
         res.redirect("/register/loginForm");
     }
@@ -254,56 +252,12 @@ router.post('/findBook', function(req, res) {
         var coll = myDB.collection("books");
         coll.find({bookName: new RegExp(req.body.searchForBook, 'i')}).toArray(function(err, books){
             if (err || !books) {
-                res.render("allBooks.ejs", {error: err ? err : "no books in Database!!!"});
+                res.render("searchForBook.ejs", {error: err ? err : "no books in Database!!!"});
             }
             else {
-                res.render("allBooks.ejs", {books: books, name: req.user.name});
+                res.render("searchForBook.ejs", {books: books, name: req.user.name});
             };
         });
-
-
-
-        //console.log(req.body);
-        //console.log(req.file);
-        //
-        //fs.readFile(req.file.path, function(err, data){
-        //    if (err) {console.log(err); process.exit();}
-        //
-        //    fs.writeFile("./public/img/" + req.file.originalname, data, function(err){
-        //        console.log(err);
-        //
-        //        var coll = myDB.collection("books");
-        //        coll.findOne({"bookName": req.body.newBookName}, function(err, book) {
-        //            if (book) {
-        //
-        //            } else {
-        //                var now = new Date();
-        //                var newBookId = String(now.getFullYear()) + String(now.getMonth()) + String(now.getDate()) +
-        //                    String(now.getHours()) + String(now.getMinutes()) + String(now.getSeconds()) +
-        //                    String(now.getMilliseconds());
-        //                var newBook = {
-        //                    "_id": newBookId,
-        //                    "addedBy": req.user.name,
-        //                    "bookName": req.body.newBookName,
-        //                    "shortInfo": req.body.newBookShortInfo,
-        //                    "fullInfo": req.body.newBookFullInfo,
-        //                    "image": "/img/" + req.file.originalname,
-        //                    "available": "YES",
-        //                    "whoTook": "-",
-        //                    "rating" : 0
-        //                };
-        //                coll.insert(newBook, function(err){
-        //                    if (err) {
-        //                        console.log(err);
-        //                    }
-        //                    else {
-        //                        res.render('addNewBook.ejs', {info: "Book added successfully", name: req.user.name});
-        //                    };
-        //                });
-        //            };
-        //        });
-        //    });
-        //});
     };
 });
 

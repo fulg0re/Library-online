@@ -50,17 +50,14 @@ passport.use('local-login', new localStrategy(function (username, password, done
     });
 }));
 
-// define the about route
 router.get('/loginForm', function(req, res){
     res.render("loginForm.ejs", {error: null});
 });
 
-// define the about route
 router.get('/registerForm', function(req, res){
     res.render("registerForm.ejs");
 });
 
-// якщо логін або пароль не вірні, відіслати помилку назад, в іншому випадку перенаправити на основний сайт
 router.post('/loginForm', function(req, res){
     passport.authenticate('local-login', function(err, user, info){
         if (err || info) {
@@ -73,24 +70,6 @@ router.post('/loginForm', function(req, res){
             });
         }
     })(req, res);
-
-    //console.log(req.body);
-    //var userLogin = req.body.inputLogin2;
-    //var userPassword = req.body.inputPassword3;
-    //var coll = myDB.collection("users");
-    //coll.findOne({"login": userLogin}, function(err, user){
-    //    if (err || !user) {
-    //        res.render("loginForm.ejs", {error: err ? err : "user not found!!!"});
-    //    }
-    //    else {
-    //        if (userPassword == user.password) {
-    //            res.redirect("/");
-    //        }
-    //        else {
-    //            res.render("loginForm.ejs", {error: "incorrect user name or password!!!"});
-    //        };
-    //    };
-    //});
 });
 
 router.post('/registerForm', function(req, res){
