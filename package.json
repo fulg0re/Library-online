@@ -1,0 +1,23 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "test1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pavlo Denys",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "mongodb": "^2.0.52",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
+}

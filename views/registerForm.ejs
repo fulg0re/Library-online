@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <!-- ***1*** Head tag-->
+    <% include parts/head.ejs %>
+    <!-- ***1*** -->
+    <body>
+        <div id="mainDiv">
+            <% if (locals.error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Register form</h3>
+                </div>
+                <div class="panel-body">
+                    <!--content-->
+                    <form class="form-horizontal" id="registerForm" method="post" action="/register/registerForm">
+                        <div class="form-group">
+                            <label for="inputLogin1" class="col-sm-2 control-label">Login</label>
+                            <div class="col-sm-10">
+                                <input type="login" class="form-control" name="inputLogin1" placeholder="Login" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword1" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="inputPassword1" pattern=".{3,}" placeholder="Password" required >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword2" class="col-sm-2 control-label">Password*</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="inputPassword2" pattern=".{3,}" placeholder="Confirm password" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail1" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="inputEmail1" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default" id="registerButton">Register</button>
+                            </div>
+                            <div id="registerLink">
+                                <a href="/register/loginForm">Back to login form</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Made by Pavlo Denys</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

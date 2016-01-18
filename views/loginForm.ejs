@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <!-- ***1*** Head tag-->
+    <% include parts/head.ejs %>
+    <!-- ***1*** -->
+<body>
+    <div id="mainDiv">
+        <% if (locals.error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login form</h3>
+            </div>
+            <div class="panel-body">
+                <!--content-->
+                <form class="form-horizontal" id="loginForm" method="post" action="/register/loginForm">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Login</label>
+                        <div class="col-sm-10">
+                            <input type="login" class="form-control" name="username" placeholder="Login" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                        <div id="registerLink">
+                            <a href="/register/registerForm">Register</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Made by Pavlo Denys</p>
+                <div id="test123"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

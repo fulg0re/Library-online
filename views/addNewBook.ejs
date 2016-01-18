@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = "en">
+<!-- ***1*** Head tag-->
+<% include parts/head.ejs %>
+<!-- ***1*** -->
+<body>
+<div id="mainDiv">
+    <!-- ***2*** Navigation Bar-->
+    <% include parts/navBar.ejs %>
+    <!-- ***2*** -->
+    <% if (locals.error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+    <% if (locals.info) { %>
+    <div class="alert alert-success"><%= info %></div>
+    <% } %>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add New Book</h3>
+        </div>
+        <div class="panel-body">
+            <!--content-->
+            <form role="form" method="post" action="/books/addNewBook" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="newBookName" class="col-sm-2 control-label">New Book Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="newBookName" placeholder="Book name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newBookShortInfo" class="col-sm-2 control-label">Short Information</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="newBookShortInfo" placeholder="Short info..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newBookFullInfo">Full Information</label>
+                    <textarea type="text" class="form-control" rows="3" name="newBookFullInfo" placeholder="Full info..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input type="file" name="book_cover" />
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Add book</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p>Made by Pavlo Denys</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

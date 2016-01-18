@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <!-- ***1*** Head tag-->
+    <% include parts/head.ejs %>
+    <!-- ***1*** -->
+    <body>
+        <div id="mainDiv">
+            <!-- ***2*** Navigation Bar-->
+            <% include parts/navBar.ejs %>
+            <!-- ***2*** -->
+            <% if (locals.error) { %>
+            <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Taken Books</h3>
+                </div>
+                <div class="panel-body" id="qwe">
+                    <!--content-->
+
+                    <%if (locals.books) {%>
+                    <% books.forEach(function(book, i) { %>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img src="<%=book.image%>" alt="<%=book.bookName%>" class="img-thumbnail" align="left">
+                            <h2><%=book.bookName%></h2>
+                            <h5>Available : <%=book.available%></h5>
+                            <h3><em><%=book.shortInfo%></em></h3>
+                            <div id="bookNo<%=i%>" class="collapse">
+                                <%=book.fullInfo%>
+                            </div>
+                            <button class="btn btn-primary" data-toggle="collapse" data-target="#bookNo<%=i%>">More info...</button>
+
+                            <form id="loginForm" method="post" action="/books/takeBookButton">
+                                <%if (book.available == "YES") {%>
+                                <button type="submit" name="book" value="<%=book.bookName%>" class="btn btn-primary takeThisBookButton">Take this book</button>
+                                <%} else {%>
+                                <button type="submit" name="book" value="<%=book.bookName%>" class="btn btn-primary" disabled="disabled">Take this book</button>
+                                <%};%>
+                            </form>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <%};%>
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Made by Pavlo Denys</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
